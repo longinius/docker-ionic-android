@@ -1,7 +1,7 @@
 FROM longinius/ionic
 
 ENV ANDROID_COMPILE_SDK="28" \
-    ANDROID_BUILD_TOOLS="28.0.2" \
+    ANDROID_BUILD_TOOLS="28.0.3" \
     ANDROID_SDK_TOOLS="4333796"
 
 WORKDIR /opt
@@ -23,6 +23,6 @@ RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android
 
 ENV ANDROID_HOME=/opt/android-sdk-linux \
     ANDROID_SDK_ROOT=/opt/android-sdk-linux \
-    PATH=$PATH:/opt/android-sdk-linux/platform-tools/
+    PATH=$PATH:/opt/android-sdk-linux/platform-tools/:/opt/android-sdk-linux/build-tools/${ANDROID_BUILD_TOOLS}
 
 RUN yes | android-sdk-linux/tools/bin/sdkmanager --licenses
